@@ -10,7 +10,7 @@ const signInFormSchema = yup.object().shape({
 });
 
 export default function Home() {
-  const { handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(signInFormSchema),
   });
   const { errors } = formState;
@@ -34,16 +34,16 @@ export default function Home() {
       >
         <Stack spacing="4">
           <Input
-            name="email"
             type="email"
             label="E-mail"
             error={errors.email}
+            {...register("email")}
           />
           <Input
-            name="password"
             type="password"
             label="Password"
             error={errors.password}
+            {...register("password")}
           />
         </Stack>
 
